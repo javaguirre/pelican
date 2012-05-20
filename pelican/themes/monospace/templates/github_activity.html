@@ -1,0 +1,11 @@
+{% if GITHUB_USER %}
+    <script>
+        $(function() {
+            $.get("https://api.github.com/users/javaguirre/repos",
+                  function(data) {
+                      console.log(data);
+                  }
+            );
+        });
+    </script>
+{% endif %}
