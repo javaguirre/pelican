@@ -1,0 +1,40 @@
+<div id="sidebar" class="">
+    <h1><a href="{{ SITEURL }}">{{ SITENAME }} {% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a></h1>
+    {% if SOCIAL %}
+        <span class="feed">
+            {% for name, link in SOCIAL %}
+                <a href="{{ link }}">{{ name|capitalize }}</a> {% if not loop.last %}|{% endif %}
+            {% endfor %}
+        </span>
+    {% endif %}
+    <br/>
+    <br/>
+    <nav>
+        {% if DISPLAY_PAGES_ON_MENU %}
+        <h2 class="widgettitle">Pages</h2>
+        <ul>
+        {% for page in PAGES %}
+            <li><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        <h2 class="widgettitle">Categories</h2>
+        <ul>
+        {% for cat, null in categories %}
+            <li {% if cat == category %}class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+        {% endfor %}
+        </ul>
+        {% if LINKS %}
+        <h2 class="widgettitle">Categories</h2>
+            <ul>
+            {% for name, link in LINKS %}
+                <li><a href="{{ link }}">{{ name }}</a></li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    </nav>
+</div>
+
+                            <!--<li><a href="{{ FEED_DOMAIN }}/{{ FEED }}" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                            {% if FEED_RSS %}
+                            <li><a href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" type="application/rss+xml" rel="alternate">rss feed</a></li> {% endif %}-->
